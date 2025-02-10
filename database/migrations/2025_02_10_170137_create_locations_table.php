@@ -18,10 +18,14 @@ class CreateLocationsTable extends Migration
             $table->string('location_name', 100);
             $table->string('latitude', 100);
             $table->string('longitude', 100);
-            $table->text('category_code', 10);
             $table->string('address', 512)->nullable();
-            $table->string('district_id', 10);
             $table->string('description', 512)->nullable();
+
+            $table->unsignedBigInteger('religion_id');
+            $table->unsignedBigInteger('district_id');
+
+            $table->foreign('religion_id')->references('id')->on('religions');
+            $table->foreign('district_id')->references('id')->on('districts');
             $table->timestamps();
         });
     }
