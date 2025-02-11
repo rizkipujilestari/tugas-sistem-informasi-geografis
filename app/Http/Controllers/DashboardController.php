@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class DashboardController extends Controller
 {
@@ -13,7 +14,9 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        return 'welcome admin <a href="'.url('/logout').'">Logout</a>';
+        // return 'welcome admin <a href="'.url('/logout').'">Logout</a>';
+        $user = Auth::user();
+        return view('dashboard', compact('user'));
     }
 
     /**

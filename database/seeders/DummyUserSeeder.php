@@ -20,7 +20,7 @@ class DummyUserSeeder extends Seeder
                 'email'     => 'superadmin@praymyway.com',
                 'phone'     => '081947047719',
                 'role'      => 'admin',
-                'password'  => \bcrypt('123098'),
+                'password'  => \bcrypt('admin123'),
             ],
             [
                 'name'      => 'Admin Rizki',

@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dashboard | Beasiswa Teladan Negeri</title>
+  <title>Dashboard - Pray My Way</title>
   <!-- Favicon -->
   <link rel="shortcut icon" href="{{ asset('elegant/img/svg/logo.svg') }}" type="image/x-icon">
   <!-- Custom styles -->
@@ -25,7 +25,7 @@
                 <span class="sr-only">Home</span>
                 {{-- <span class="icon logo" aria-hidden="true"></span> --}}
                 <div class="logo-text">
-                    <img src="{{ asset('images/blog/logo-beasiswa-teladan-negeri-removebg.png') }}" width="135px">
+                    <b>Pray My Way</b>
                 </div>
             </a>
             <button class="sidebar-toggle transparent-btn" title="Menu" type="button">
@@ -37,104 +37,22 @@
             <ul class="sidebar-body-menu">
                 <li>
                     {{-- <a class="active" href="/"><span class="icon home" aria-hidden="true"></span>Dashboard</a> --}}
-                    <a href="{{ url('/dashboard') }}"><span class="icon home" aria-hidden="true"></span>Dashboard</a>
+                    <a href="{{ url('/admin/dashboard') }}"><span class="icon home" aria-hidden="true"></span>Dashboard</a>
                 </li>
 
                 @if(auth()->check())
-                    @if(in_array(auth()->user()->role, ['admin', 'volunteer']))
-
+                    @if(in_array(auth()->user()->role, ['admin']))
                         <li>
-                            <a class="show-cat-btn" href="##">
-                                <span class="icon folder" aria-hidden="true"></span>Pembinaan
-                                <span class="category__btn transparent-btn" title="Open list">
-                                    <span class="sr-only">Open list</span>
-                                    <span class="icon arrow-down" aria-hidden="true"></span>
-                                </span>
-                            </a>
-                            <ul class="cat-sub-menu">
-                                <li>
-                                    <a href="{{ url('/activity') }}">Siswa</a>
-                                </li>
-                            </ul>
+                            <a href="{{ url('/admin/locations') }}"><span class="icon edit" aria-hidden="true"></span>Data Lokasi</a>
                         </li>
                         <li>
-                            <a class="show-cat-btn" href="##">
-                                <span class="icon document" aria-hidden="true"></span>Daftar Hadir
-                                <span class="category__btn transparent-btn" title="Open list">
-                                    <span class="sr-only">Open list</span>
-                                    <span class="icon arrow-down" aria-hidden="true"></span>
-                                </span>
-                            </a>
-                            <ul class="cat-sub-menu">
-                                <li>
-                                    <a href="#">Siswa</a>
-                                </li>
-                                {{-- <li>
-                                    <a href="new-post.html">Orang Tua</a>
-                                </li> --}}
-                            </ul>
+                            <a href="{{ url('/admin/religion') }}"><span class="icon paper" aria-hidden="true"></span>Data Agama</a>
                         </li>
                         <li>
-                            <a href="##"><span class="icon edit" aria-hidden="true"></span>Data Tugas</a>
+                            <a href="{{ url('/admin/districts') }}"><span class="icon folder" aria-hidden="true"></span>Data Kecamatan</a>
                         </li>
                         <li>
-                            <a href="##"><span class="icon paper" aria-hidden="true"></span>Data Nilai</a>
-                        </li>
-                        {{-- <li>
-                            <a class="show-cat-btn" href="##">
-                                <span class="icon image" aria-hidden="true"></span>Media
-                                <span class="category__btn transparent-btn" title="Open list">
-                                    <span class="sr-only">Open list</span>
-                                    <span class="icon arrow-down" aria-hidden="true"></span>
-                                </span>
-                            </a>
-                            <ul class="cat-sub-menu">
-                                <li>
-                                    <a href="media-01.html">Pembinaan</a>
-                                </li>
-                                <li>
-                                    <a href="media-02.html">Relawan</a>
-                                </li>
-                            </ul>
-                        </li> --}}
-                    </ul>
-
-                    <span class="system-menu__title">Master Data</span>
-
-                    <ul class="sidebar-body-menu">
-                        <li>
-                            <a href="{{ url('/student') }}"><span class="icon edit" aria-hidden="true"></span>Data Siswa</a>
-                        </li>
-                        <li>
-                            <a href="{{ url('/parent') }}"><i data-feather="user" aria-hidden="true"></i> &nbsp; Data Orang Tua</a>
-                        </li>
-                        <li>
-                            <a class="show-cat-btn" href="##">
-                                <span class="icon user-3" aria-hidden="true"></span>Users
-                                <span class="category__btn transparent-btn" title="Open list">
-                                    <span class="sr-only">Open list</span>
-                                    <span class="icon arrow-down" aria-hidden="true"></span>
-                                </span>
-                            </a>
-                            <ul class="cat-sub-menu">
-                                <li>
-                                    <a href="#">Pembina</a>
-                                </li>
-                                <li>
-                                    <a href="#">Relawan</a>
-                                </li>
-                            </ul>
-                        </li>
-                        {{-- <li>
-                            <a href="##"><span class="icon setting" aria-hidden="true"></span>Settings</a>
-                        </li> --}}
-                    
-                        @else
-                        <li>
-                            <a href="##"><span class="icon edit" aria-hidden="true"></span>Data Siswa</a>
-                        </li>
-                        <li>
-                            <a href="##"><span class="icon paper" aria-hidden="true"></span>Data Nilai</a>
+                            <a href="{{ url('/admin/users') }}"><i data-feather="user" aria-hidden="true"></i> &nbsp; Data Users</a>
                         </li>
                     @endif
                 @endif
@@ -199,7 +117,7 @@
     <footer class="footer">
   <div class="container footer--flex">
     <div class="footer-start">
-      <p> Beasiswa Teladan © 2025 - Template Dashboard : <a href="elegant-dashboard.com" target="_blank"
+      <p> Pray My Way © 2025 - Template Dashboard : <a href="elegant-dashboard.com" target="_blank"
           rel="noopener noreferrer">elegant-dashboard.com</a></p>
     </div>
   </div>
@@ -207,7 +125,7 @@
   </div>
 </div>
 <!-- Chart library -->
-<script src="{{ asset('elegant//plugins/chart.min.js') }}"></script>
+<script src="{{ asset('elegant/plugins/chart.min.js') }}"></script>
 <!-- Icons library -->
 <script src="{{ asset('elegant/plugins/feather.min.js') }}"></script>
 <!-- Custom scripts -->

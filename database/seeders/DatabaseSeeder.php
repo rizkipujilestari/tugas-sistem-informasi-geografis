@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             DummyUserSeeder::class,
             ReligionSeeder::class,
+            DistrictSeeder::class,
         ]);
     }
 }
