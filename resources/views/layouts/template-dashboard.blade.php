@@ -25,7 +25,7 @@
                 <span class="sr-only">Home</span>
                 {{-- <span class="icon logo" aria-hidden="true"></span> --}}
                 <div class="logo-text">
-                    <b>Pray My Way</b>
+                    <h3 style="color:white;">Pray My Way</h3>
                 </div>
             </a>
             <button class="sidebar-toggle transparent-btn" title="Menu" type="button">
@@ -36,23 +36,47 @@
         <div class="sidebar-body">
             <ul class="sidebar-body-menu">
                 <li>
-                    {{-- <a class="active" href="/"><span class="icon home" aria-hidden="true"></span>Dashboard</a> --}}
-                    <a href="{{ url('/admin/dashboard') }}"><span class="icon home" aria-hidden="true"></span>Dashboard</a>
+                    <a href="{{ url('/admin/dashboard') }}" class="{{ request()->is('admin/dashboard') ? 'active' : '' }}">
+                        <span class="icon home" aria-hidden="true"></span>Dashboard
+                    </a>
                 </li>
 
                 @if(auth()->check())
                     @if(in_array(auth()->user()->role, ['admin']))
                         <li>
-                            <a href="{{ url('/admin/locations') }}"><span class="icon edit" aria-hidden="true"></span>Data Lokasi</a>
+                            <a href="{{ url('/admin/locations') }}" class="{{ request()->is('admin/locations') ? 'active' : '' }}">
+                                <span class="icon edit" aria-hidden="true"></span>Data Lokasi
+                            </a>
                         </li>
                         <li>
-                            <a href="{{ url('/admin/religion') }}"><span class="icon paper" aria-hidden="true"></span>Data Agama</a>
+                            <a href="{{ url('/admin/religion') }}" class="{{ request()->is('admin/religion') ? 'active' : '' }}">
+                                <span class="icon paper" aria-hidden="true"></span>Data Agama
+                            </a>
                         </li>
                         <li>
-                            <a href="{{ url('/admin/districts') }}"><span class="icon folder" aria-hidden="true"></span>Data Kecamatan</a>
+                            <a class="show-cat-btn" href="##">
+                                <span class="icon folder" aria-hidden="true"></span>Data Daerah
+                                <span class="category__btn transparent-btn" title="Open list">
+                                    <span class="sr-only">Open list</span>
+                                    <span class="icon arrow-down" aria-hidden="true"></span>
+                                </span>
+                            </a>
+                            <ul class="cat-sub-menu">
+                                <li>
+                                    <a href="{{ url('/admin/districts') }}" class="{{ request()->is('admin/districts') ? 'active' : '' }}">
+                                        Kecamatan
+                                    </a>
+                                </li>
+                            </ul>
                         </li>
                         <li>
-                            <a href="{{ url('/admin/users') }}"><i data-feather="user" aria-hidden="true"></i> &nbsp; Data Users</a>
+                            <a href="{{ url('/admin/users') }}" class="{{ request()->is('admin/users') ? 'active' : '' }}">
+                                <i data-feather="user" aria-hidden="true"></i> &nbsp; Data Users
+                            </a>
+                        </li>
+                        @else
+                        <li>
+                            <a href="#"><span class="icon folder" aria-hidden="true"></span>Jadwal Ibadah</a>
                         </li>
                     @endif
                 @endif
