@@ -28,10 +28,13 @@ Route::post('/login', [LoginController::class, 'auth']);
 
 Route::middleware(['auth', 'userAccess:admin'])->prefix('admin')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index']);
-    Route::get('/locations', [LocationController::class, 'index']);
     Route::get('/religion', [ReligionController::class, 'index']);
     Route::get('/districts', [DistrictController::class, 'index']);
     Route::get('/users', [UserController::class, 'index']);
+    
+    Route::get('/locations', [LocationController::class, 'index']);
+    Route::get('/locations/new', [LocationController::class, 'create']);
+    Route::post('/locations', [LocationController::class, 'store']);
 });
 
 Route::get('/location', [FindLocationController::class, 'index']);

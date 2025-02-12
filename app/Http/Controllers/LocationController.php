@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\District;
 use App\Models\Location;
+use App\Models\Religion;
 use Illuminate\Http\Request;
 
 class LocationController extends Controller
@@ -25,7 +27,9 @@ class LocationController extends Controller
      */
     public function create()
     {
-        //
+        $religions = Religion::all();
+        $districts = District::all();
+        return view('locations.create', compact('religions', 'districts'));
     }
 
     /**
@@ -36,7 +40,18 @@ class LocationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'location_name' => 'required',
+            'latitude'      => 'required',
+            'longitude'     => 'required',
+            'religion_id'   => 'required',
+            'district_id'   => 'required',
+        ]);
+
+        $insertData = request()->except(['_token']);
+        Location::create($insertData);
+
+        return redirect('admin/locations')->with('success', 'Location created successfully.');
     }
 
     /**
