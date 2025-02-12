@@ -24,7 +24,7 @@ class FindLocationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function locations($id)
+    public function getLocations(Request $request)
     {
         $locations = Location::all();
         return response()->json(['data' => $locations]);

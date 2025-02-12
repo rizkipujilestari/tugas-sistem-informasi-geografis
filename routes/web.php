@@ -38,5 +38,6 @@ Route::middleware(['auth', 'userAccess:admin'])->prefix('admin')->group(function
 });
 
 Route::get('/location', [FindLocationController::class, 'index']);
+Route::get('/getlocations', [FindLocationController::class, 'getLocations']);
 
 Route::get('/logout', [LoginController::class, 'logout']);
