@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\District;
 use App\Models\Location;
+use App\Models\Religion;
 use Illuminate\Http\Request;
 
 class FindLocationController extends Controller
@@ -15,7 +17,9 @@ class FindLocationController extends Controller
     public function index()
     {
         $locations = Location::all();
-        return view('findlocation', compact('locations'));
+        $districts = District::all();
+        $religions = Religion::all();
+        return view('findlocation', compact('locations', 'districts', 'religions'));
     }
 
     /**
