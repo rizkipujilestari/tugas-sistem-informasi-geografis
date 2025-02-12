@@ -10,6 +10,37 @@
   <link rel="shortcut icon" href="{{ asset('elegant/img/svg/logo.svg') }}" type="image/x-icon">
   <!-- Custom styles -->
   <link rel="stylesheet" href="{{ asset('elegant/css/style.min.css') }}">
+
+  <style>
+    .alert {
+        padding: 20px;
+        color: white;
+        border-radius: 20px;
+    }
+
+    .alert-success-custom {
+        background-color: #88d488;
+    }
+
+    .alert-danger-custom {
+        background-color: #dc4545;
+    }
+
+    .closebtn {
+        margin-left: 15px;
+        color: white;
+        font-weight: bold;
+        float: right;
+        font-size: 22px;
+        line-height: 20px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    .closebtn:hover {
+        color: black;
+    }
+  </style>
 </head>
 
 <body>

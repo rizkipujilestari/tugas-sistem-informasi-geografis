@@ -34,7 +34,10 @@ Route::middleware(['auth', 'userAccess:admin'])->prefix('admin')->group(function
     
     Route::get('/locations', [LocationController::class, 'index']);
     Route::get('/locations/new', [LocationController::class, 'create']);
+    Route::get('/locations/{id}', [LocationController::class, 'edit']);
     Route::post('/locations', [LocationController::class, 'store']);
+    Route::put('/locations/{id}', [LocationController::class, 'update']);
+    Route::delete('/locations/{id}', [LocationController::class, 'destroy']);
 });
 
 Route::get('/location', [FindLocationController::class, 'index']);

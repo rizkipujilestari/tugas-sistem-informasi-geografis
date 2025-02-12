@@ -62,7 +62,8 @@ class LocationController extends Controller
      */
     public function show($id)
     {
-        //
+        $findLocation = Location::findOrFail($id);
+        return $findLocation;
     }
 
     /**
@@ -73,7 +74,10 @@ class LocationController extends Controller
      */
     public function edit($id)
     {
-        //
+        $location = Location::findOrFail($id);
+        $religions = Religion::all();
+        $districts = District::all();
+        return view('locations.edit', compact('location', 'religions', 'districts'));
     }
 
     /**
@@ -85,7 +89,20 @@ class LocationController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'location_name' => 'required',
+            'latitude'      => 'required',
+            'longitude'     => 'required',
+            'religion_id'   => 'required',
+            'district_id'   => 'required',
+        ]);
+
+        $location = Location::findOrFail($id);
+        $updateData = request()->except(['_token']);
+        $updateData = request()->except(['_method']);
+        $location->update($updateData);
+        
+        return redirect('admin/locations')->with('success', 'Success Update Location.');
     }
 
     /**
@@ -96,6 +113,9 @@ class LocationController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $location = Location::findOrFail($id);
+        $location->delete();
+        
+        return redirect('admin/locations')->with('success', 'Location Deleted Successfully.');
     }
 }

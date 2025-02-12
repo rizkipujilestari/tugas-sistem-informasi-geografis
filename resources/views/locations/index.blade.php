@@ -11,16 +11,12 @@
             <h2 class="main-title">Data Lokasi</h2>
 
             @if (session('success'))
-                <div class="alert badge-success" id="message">
+                <div class="alert alert-success-custom" style="margin-bottom:20px;">
+                    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
                     {{ session('success') }}
                 </div>
             @endif
 
-            @if (session('error'))
-                <div class="alert badge-danger" id="message">
-                    {{ session('danger') }}
-                </div>
-            @endif
         </div>
         <div class="col-md-3 text-right">
             <a href="{{ url('admin/locations/new') }}" 
@@ -55,8 +51,12 @@
                             <td>{{ $row->district->name }}</td>
                             <td>{{ $row->religion->description }}</td>
                             <td>
-                                <i data-feather="edit" aria-hidden="true"></i>
-                                <i data-feather="trash" aria-hidden="true"></i>
+                                <button onclick="window.location.href='{{ url('admin/locations/'.$row->id) }}';" class="btn secondary-default-btn transparent-btn"> <i data-feather="edit" aria-hidden="true"></i> </button>
+                                <form action="{{ url('admin/locations/'.$row->id) }}" method="POST" style="display: inline">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn secondary-default-btn transparent-btn"><i data-feather="trash" aria-hidden="true"></i></button>
+                                </form>
                             </td>
                         </tr>
                         @endforeach
@@ -73,10 +73,5 @@
         </div>
     </div>
   
-    <script>
-        setTimeout(function() {
-            $('#message').fadeOut('slow'); 
-        }, 3000);
-    </script>
 </div>
 @endsection
