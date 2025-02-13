@@ -21,11 +21,11 @@ class ReligionSeeder extends Seeder
             ],
             [
                 'name'        => 'Katolik',
-                'description' => 'Gereja',
+                'description' => 'Gereja Katolik',
             ],
             [
                 'name'        => 'Kristen',
-                'description' => 'Gereja',
+                'description' => 'Gereja Kristen',
             ],
             [
                 'name'        => 'Hindu',
